@@ -1,0 +1,15 @@
+{
+    "name":"PWA Bodyshop Damage Estimation",
+    "short_name":"PWA Bodyshop",
+    "start_url":".",
+    "background_color":"#ffffff",
+    "theme_color":"#000000",
+    "display":"standalone",
+    "icons":[
+        {
+            "src":"images/icon.png",
+            
+            "type":"image/png"
+        }
+    ]
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +8,24 @@
     <link rel="stylesheet" href="src/styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/icon.png">
-
 </head>
-
 <body>
-    <p>Bodyshop Damage Assessment</p>
+    <header class="topbar">
+        <h1>Bodyshop Damage Assessment</h1>
+        <p class="hint">Tap a panel, choose an operation, get the historical price.</p>
+    </header>
+
+    <main class="layout">
+        <!-- The SVG is injected here at runtime by index.js -->
+        <section class="card" id="car" aria-label="Car diagram"></section>
+
+        <!-- Estimate output -->
+        <aside class="card" id="estimate">
+            <h2>Estimate</h2>
+            <div id="result"><p class="hint">Select a panel to begin.</p></div>
+        </aside>
+    </main>
+
     <script src="src/index.js"></script>
-
 </body>
-
 </html>

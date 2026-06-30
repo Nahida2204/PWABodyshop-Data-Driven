@@ -1,6 +1,46 @@
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
+:root{
+  --ink:#1c1b18; --muted:#6b6a64; --paper:#f6f5f1; --card:#fff; --line:#e2e0d8;
+  --accent:#0f6e56; --accent-d:#0b5341; --warn:#BA7517;
+  --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,Menlo,Consolas,monospace;
 }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px}
+.topbar{padding:16px 18px 4px;max-width:1040px;margin:0 auto}
+.topbar h1{font-size:19px;font-weight:600;margin:0}
+.hint{color:var(--muted);font-size:12.5px;margin:4px 0 0}
+.layout{max-width:1040px;margin:0 auto;padding:14px 18px 60px;display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+
+/* ---- the injected SVG ---- */
+#car svg{width:100%;height:auto;max-height:74vh;display:block}
+/* the base car drawing never intercepts clicks */
+#layer1{pointer-events:none}
+/* kill Inkscape's translucent-blue hotspot fills; make them invisible by default */
+#layer3 path,#layer3 rect{fill:transparent !important;stroke:none !important;transition:fill .12s}
+/* only mapped hotspots are interactive */
+#layer3 .hot{cursor:pointer;pointer-events:all}
+#layer3 .hot.has-data{fill:rgba(15,110,86,.10) !important}   /* faint tint = we have history */
+#layer3 .hot:hover{fill:rgba(15,110,86,.32) !important}
+#layer3 .hot.selected{fill:rgba(15,110,86,.55) !important}
+
+/* ---- estimate panel ---- */
+#estimate h2{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px;font-weight:600}
+.tag{display:inline-block;font-size:11px;background:#eef0ec;color:var(--accent-d);padding:3px 9px;border-radius:12px}
+.ops{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 2px}
+.op{font-size:12.5px;padding:6px 12px;border:1px solid #c9c8c0;border-radius:20px;background:#fff;cursor:pointer}
+.op:hover{background:#f0efea}
+.op.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.big{font-size:30px;font-weight:600;letter-spacing:-.02em;margin:8px 0 0}
+.vat{color:var(--muted);font-size:13px}
+.meta{display:flex;gap:18px;margin-top:12px;font-size:13px}
+.meta b{font-weight:600}
+.range{font-family:var(--mono)}
+.empty{color:var(--warn);font-size:13.5px;padding:8px 0}
+
+/* ---- damage direction ---- */
+.dirwrap{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.dirlabel{font-size:12px;color:var(--muted);margin-bottom:2px}
+.opt{font-style:italic;opacity:.8}
+#dmgArrows line{pointer-events:none}
